@@ -3,7 +3,7 @@
   width: 100%;
   border: none;
   font-family: "Raleway", sans-serif;
-  line-height: 1.125em;
+  line-height: 2em;
 }
 /* .react-calendar--doubleView {
   width: 700px;
@@ -75,13 +75,10 @@
 .react-calendar__century-view .react-calendar__tile {
   padding: 2em 0.5em;
 } */
-/* .react-calendar__tile {
-  max-width: 100%;
-  padding: 10px 6.6667px;
-  background: none;
-  text-align: center;
-  line-height: 16px;
-} */
+.react-calendar__tile {
+  padding: 25px 6.6667px;
+  line-height: 24px;
+}
 /* .react-calendar__tile:disabled {
   background-color: #f0f0f0;
 } */
