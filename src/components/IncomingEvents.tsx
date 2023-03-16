@@ -5,9 +5,14 @@ import Spacer from "./Spacer"
 import { MdExpandMore } from "react-icons/md"
 import { motion, AnimatePresence } from "framer-motion"
 import useExpand from "../hooks/useExpand"
+import useMediaQuery from "../hooks/useMediaQuery"
 
 function IncomingEvents() {
-  const { isExpanded, toggleMenu } = useExpand()
+  const { isExpanded, toggleMenu } = useExpand(true)
+
+  console.log(isExpanded)
+
+  const isLgScreen = useMediaQuery("(min-width: 1024px)")
 
   const expandAnimation = {
     initial: { height: 0 },
@@ -19,16 +24,18 @@ function IncomingEvents() {
     <SectionContainer>
       <Spacer value={2} />
       <div
-        onClick={toggleMenu}
-        className="group flex items-center justify-between hover:cursor-pointer hover:bg-slate-300"
+        onClick={!isLgScreen ? toggleMenu : () => {}}
+        className="group flex items-center justify-between hover:cursor-pointer hover:bg-slate-300 lg:hover:cursor-default lg:hover:bg-inherit"
       >
         <SectionHeader>Incoming events</SectionHeader>
-        <MdExpandMore
-          size={24}
-          className={`ml-auto transition-transform group-hover:scale-125 ${
-            isExpanded && "rotate-180"
-          } `}
-        />
+        {!isLgScreen && (
+          <MdExpandMore
+            size={24}
+            className={`ml-auto transition-transform group-hover:scale-125 ${
+              isExpanded && "rotate-180"
+            } `}
+          />
+        )}
       </div>
       <Spacer value={2} />
       <AnimatePresence>

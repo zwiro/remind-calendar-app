@@ -6,7 +6,7 @@ import "../calendar.css"
 function CalendarContainer() {
   const [value, onChange] = useState(new Date())
   return (
-    <section className="lg:col-span-2 lg:row-start-1 lg:px-12">
+    <section className="lg:col-span-2 lg:row-start-1 lg:px-12 lg:pt-12">
       <Calendar
         onChange={onChange}
         value={value}
