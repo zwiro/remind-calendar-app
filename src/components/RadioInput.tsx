@@ -7,7 +7,7 @@ function RadioInput({ value }: { value: string }) {
         name="category"
         value={value}
         className={`peer/${value} hidden`}
-        checked
+        defaultChecked={value === "private"}
       />
       <label
         htmlFor={value}

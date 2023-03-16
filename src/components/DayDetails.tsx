@@ -15,6 +15,7 @@ function DayDetails() {
           day: "2-digit",
           month: "long",
           year: "numeric",
+          weekday: "long",
         })}
       </SectionHeader>
       <Spacer value={2} />

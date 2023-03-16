@@ -9,9 +9,7 @@ import useMediaQuery from "../hooks/useMediaQuery"
 
 function IncomingEvents() {
   const isLgScreen = useMediaQuery("(min-width: 1024px)")
-  const { isExpanded, toggleMenu } = useExpand(isLgScreen && true)
-
-  console.log(isExpanded)
+  const { isExpanded, toggleMenu } = useExpand(true)
 
   const expandAnimation = {
     initial: { height: 0 },

@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-  @apply bg-slate-200 text-zinc-800;
+  @apply bg-gradient-to-b from-slate-200 to-gray-300  text-zinc-800;
   font-family: "Raleway", sans-serif;
   line-height: 1.5;
   font-weight: 400;
