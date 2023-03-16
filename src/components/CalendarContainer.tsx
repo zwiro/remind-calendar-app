@@ -10,7 +10,7 @@ function CalendarContainer() {
       <Calendar
         onChange={onChange}
         value={value}
-        className="bg-slate-100 text-zinc-900"
+        className="bg-slate-200 text-zinc-900"
       />
     </section>
   )
