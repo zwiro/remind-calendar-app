@@ -7,8 +7,7 @@ import InputContainer from "./InputContainer"
 function AddEventForm() {
   return (
     <form className="flex flex-col">
-      <SectionHeader>Add a new event</SectionHeader>
-      <Spacer value={2} />
+      <h3 className="text-lg font-bold">Add a new event</h3>
       <div className="flex flex-col gap-2 py-2">
         <Input name="Title" value="title" placeholder="Meeting with client" />
         <InputContainer>
