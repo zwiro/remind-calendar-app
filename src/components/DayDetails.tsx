@@ -3,8 +3,6 @@ import PlannedEvents from "./PlannedEvents"
 import SectionContainer from "./SectionContainer"
 import SectionHeader from "./SectionHeader"
 import Spacer from "./Spacer"
-import useExpand from "../hooks/useExpand"
-import { motion, AnimatePresence } from "framer-motion"
 
 function DayDetails() {
   return (

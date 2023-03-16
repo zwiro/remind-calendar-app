@@ -5,6 +5,7 @@ import { MdAddBox, MdExpandMore } from "react-icons/md"
 import useExpand from "../hooks/useExpand"
 import { motion, AnimatePresence } from "framer-motion"
 import Spacer from "./Spacer"
+import RadioInput from "./RadioInput"
 
 function AddEventForm() {
   const { isExpanded, toggleMenu } = useExpand()
@@ -63,14 +64,18 @@ function AddEventForm() {
                 disableClock={true}
                 clearIcon={null}
                 name="date"
-                format="h:m a"
+                format="hh:mm a"
                 value={new Date()}
                 className="grow bg-slate-100 py-2 text-center"
               />
             </InputContainer>
+            <div className="flex justify-end gap-2">
+              <RadioInput value="work" />
+              <RadioInput value="private" />
+            </div>
             <button
               type="submit"
-              className="group flex items-center gap-2 self-end font-bold text-blue-500 hover:underline"
+              className="group flex items-center gap-2 self-end text-lg font-bold text-blue-500 hover:underline"
             >
               Add{" "}
               <MdAddBox className="transition-transform group-hover:scale-125" />
