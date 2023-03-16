@@ -18,3 +18,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+.react-time-picker__wrapper {
+  border: none;
+}

@@ -31,7 +31,14 @@ function AddEventForm() {
           <label htmlFor="time" className="w-1/5">
             Time
           </label>
-          <TimePicker className="grow" />
+          <TimePicker
+            disableClock={true}
+            clearIcon={null}
+            name="date"
+            format="h:m a"
+            value={new Date()}
+            className="grow bg-slate-100 py-2 text-center"
+          />
         </InputContainer>
       </div>
       <button
