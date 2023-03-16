@@ -21,7 +21,7 @@ function AddEventForm() {
     <form className="flex flex-col">
       <div
         onClick={toggleMenu}
-        className="group flex items-center justify-between hover:cursor-pointer"
+        className="group flex items-center justify-between hover:cursor-pointer hover:bg-slate-300"
       >
         <h3 className="text-lg font-bold">Add a new event</h3>
         <MdExpandMore

@@ -17,9 +17,10 @@ function IncomingEvents() {
 
   return (
     <SectionContainer>
+      <Spacer value={2} />
       <div
         onClick={toggleMenu}
-        className="group flex items-center justify-between hover:cursor-pointer"
+        className="group flex items-center justify-between hover:cursor-pointer hover:bg-slate-300"
       >
         <SectionHeader>Incoming events</SectionHeader>
         <MdExpandMore
