@@ -5,9 +5,10 @@ import Spacer from "./Spacer"
 import { MdExpandMore } from "react-icons/md"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import useExpand from "../hooks/useExpand"
 
 function IncomingEvents() {
-  const [incomingEventsExpanded, setIncomingEventsExpanded] = useState(false)
+  const { isExpanded, toggleMenu } = useExpand()
 
   const incomingEventsAnimation = {
     initial: { height: 0 },
@@ -20,16 +21,16 @@ function IncomingEvents() {
       <div className="flex items-center justify-between">
         <SectionHeader>Incoming events</SectionHeader>
         <MdExpandMore
-          onClick={() => setIncomingEventsExpanded((prevState) => !prevState)}
+          onClick={toggleMenu}
           size={24}
           className={`ml-auto transition-transform hover:scale-125 hover:cursor-pointer ${
-            incomingEventsExpanded && "rotate-180"
+            isExpanded && "rotate-180"
           } `}
         />
       </div>
       <Spacer value={2} />
       <AnimatePresence>
-        {incomingEventsExpanded && (
+        {isExpanded && (
           <motion.div {...incomingEventsAnimation}>
             <IncomingEvent />
             <IncomingEvent />
