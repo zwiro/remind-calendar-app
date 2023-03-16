@@ -4,7 +4,7 @@ import IncomingEvents from "./components/IncomingEvents"
 
 function App() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col lg:grid">
       <IncomingEvents />
       <CalendarContainer />
       <DayDetails />
