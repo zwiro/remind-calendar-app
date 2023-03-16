@@ -1,8 +1,7 @@
-import SectionHeader from "./SectionHeader"
-import Spacer from "./Spacer"
 import TimePicker from "react-time-picker"
 import Input from "./Input"
 import InputContainer from "./InputContainer"
+import { MdAddBox } from "react-icons/md"
 
 function AddEventForm() {
   return (
@@ -42,9 +41,9 @@ function AddEventForm() {
       </div>
       <button
         type="submit"
-        className="self-end border bg-blue-500 px-4 py-2 font-bold text-slate-200 transition-colors hover:border-blue-500 hover:bg-slate-200 hover:text-blue-500"
+        className="group flex items-center gap-2 self-end font-bold text-blue-500 hover:underline"
       >
-        Add
+        Add <MdAddBox className="transition-transform group-hover:scale-125" />
       </button>
     </form>
   )
