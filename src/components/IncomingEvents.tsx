@@ -3,14 +3,13 @@ import SectionContainer from "./SectionContainer"
 import SectionHeader from "./SectionHeader"
 import Spacer from "./Spacer"
 import { MdExpandMore } from "react-icons/md"
-import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import useExpand from "../hooks/useExpand"
 
 function IncomingEvents() {
   const { isExpanded, toggleMenu } = useExpand()
 
-  const incomingEventsAnimation = {
+  const expandAnimation = {
     initial: { height: 0 },
     animate: { height: "auto" },
     exit: { height: 0 },
@@ -18,12 +17,14 @@ function IncomingEvents() {
 
   return (
     <SectionContainer>
-      <div className="flex items-center justify-between">
+      <div
+        onClick={toggleMenu}
+        className="group flex items-center justify-between hover:cursor-pointer"
+      >
         <SectionHeader>Incoming events</SectionHeader>
         <MdExpandMore
-          onClick={toggleMenu}
           size={24}
-          className={`ml-auto transition-transform hover:scale-125 hover:cursor-pointer ${
+          className={`ml-auto transition-transform group-hover:scale-125 ${
             isExpanded && "rotate-180"
           } `}
         />
@@ -31,7 +32,7 @@ function IncomingEvents() {
       <Spacer value={2} />
       <AnimatePresence>
         {isExpanded && (
-          <motion.div {...incomingEventsAnimation}>
+          <motion.div {...expandAnimation}>
             <IncomingEvent />
             <IncomingEvent />
             <IncomingEvent />

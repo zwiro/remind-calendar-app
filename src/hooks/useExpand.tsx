@@ -1,7 +1,7 @@
 import { useState } from "react"
 
-function useExpand() {
-  const [isExpanded, setIsExpanded] = useState(false)
+function useExpand(initialState = false) {
+  const [isExpanded, setIsExpanded] = useState(initialState)
 
   function toggleMenu() {
     setIsExpanded((prevState) => !prevState)

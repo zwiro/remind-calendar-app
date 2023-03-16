@@ -1,5 +1,7 @@
 import PlannedEvent from "./PlannedEvent"
 import Spacer from "./Spacer"
+import { motion, AnimatePresence } from "framer-motion"
+import { MdExpandMore } from "react-icons/md"
 
 function PlannedEvents() {
   return (
