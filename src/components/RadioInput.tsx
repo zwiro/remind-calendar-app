@@ -14,7 +14,7 @@ function RadioInput({ register, defaultValue, isEditing }: RadioInputProps) {
         type="radio"
         id={`${isEditing ? "workEdit" : "work"}`}
         name="category"
-        value={`${isEditing ? "workEdit" : "work"}`}
+        value="work"
         className={` ${isEditing ? "peer/workEdit" : "peer/work"} hidden`}
         defaultChecked={defaultValue === "work"}
       />
@@ -33,7 +33,7 @@ function RadioInput({ register, defaultValue, isEditing }: RadioInputProps) {
         type="radio"
         id={`${isEditing ? "privateEdit" : "private"}`}
         name="category"
-        value={`${isEditing ? "privateEdit" : "private"}`}
+        value="private"
         className={`${isEditing ? "peer/privateEdit" : "peer/private"} hidden`}
         defaultChecked={defaultValue === "private" || !isEditing}
       />

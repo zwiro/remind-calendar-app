@@ -3,8 +3,10 @@ import Input from "./Input"
 import InputContainer from "./InputContainer"
 import RadioInput from "./RadioInput"
 import { useForm } from "react-hook-form"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { AiFillCheckSquare } from "react-icons/ai"
+import { useAppDispatch } from "../hooks/reduxHooks"
+import { editEvent } from "../state/eventsSlice"
 
 interface PlannedEventProps {
   id: string
@@ -13,6 +15,8 @@ interface PlannedEventProps {
   time: string
   location: string
   category: string
+  date: string
+  closeEditForm: () => void
 }
 
 function EditEventForm({
@@ -22,17 +26,35 @@ function EditEventForm({
   description,
   time,
   category,
+  date,
+  closeEditForm,
 }: PlannedEventProps) {
+  const dispatch = useAppDispatch()
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitSuccessful },
     reset,
   } = useForm()
-  const [pickedTime, setPickedTime] = useState("12:00")
+  const [pickedTime, setPickedTime] = useState(time)
 
   return (
-    <form className="flex flex-col gap-2 py-2">
+    <form
+      onSubmit={handleSubmit((data) => {
+        const formData = {
+          id,
+          title: data.title,
+          description: data.description,
+          location: data.location,
+          date,
+          time: pickedTime,
+          category: data.category,
+        }
+        dispatch(editEvent(formData))
+        closeEditForm()
+      })}
+      className="flex flex-col gap-2 py-2"
+    >
       <Input
         name="Title"
         value="title"
@@ -73,7 +95,7 @@ function EditEventForm({
           clearIcon={null}
           name="date"
           format="hh:mm a"
-          value={time}
+          value={pickedTime}
           onChange={(e) => setPickedTime(e.toString())}
           className="grow bg-slate-100 py-2 text-center"
         />

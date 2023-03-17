@@ -17,6 +17,7 @@ interface PlannedEventProps {
   time: string
   location: string
   category: string
+  date: string
 }
 
 function PlannedEvent({
@@ -26,8 +27,13 @@ function PlannedEvent({
   time,
   location,
   category,
+  date,
 }: PlannedEventProps) {
   const [isEditing, setIsEditing] = useState(false)
+
+  function closeEditForm() {
+    setIsEditing(false)
+  }
 
   return (
     <>
@@ -71,6 +77,8 @@ function PlannedEvent({
           title={title}
           time={time}
           category={category}
+          date={date}
+          closeEditForm={closeEditForm}
         />
       )}
     </>

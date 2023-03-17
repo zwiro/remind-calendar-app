@@ -37,6 +37,7 @@ function PlannedEvents() {
           location={event.location}
           category={event.category}
           time={event.time}
+          date={event.date}
         />
       ))}
       {!plannedEvents.length && (
