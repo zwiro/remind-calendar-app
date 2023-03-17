@@ -36,6 +36,7 @@ function AddEventForm() {
           id: nanoid(),
           title: data.title,
           description: data.description,
+          location: data.location,
           date,
           time,
           category: data.category,
