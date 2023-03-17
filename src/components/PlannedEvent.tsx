@@ -4,6 +4,7 @@ import { RiParentFill } from "react-icons/ri"
 import { GoLocation } from "react-icons/go"
 
 interface PlannedEventProps {
+  id: string
   title: string
   description: string
   time: string
@@ -12,6 +13,7 @@ interface PlannedEventProps {
 }
 
 function PlannedEvent({
+  id,
   title,
   description,
   time,
@@ -35,10 +37,14 @@ function PlannedEvent({
         </p>
         <div className="space-x-3 font-bold">
           <button className="invisible text-blue-500 transition-transform hover:scale-125 group-hover:visible">
-            <AiFillEdit size={24} />
+            <AiFillEdit size={24} className="pointer-events-none" />
           </button>
-          <button className="invisible text-red-500 transition-transform hover:scale-125 group-hover:visible">
-            <AiFillDelete size={24} />
+          <button
+            data-action="delete"
+            data-id={id}
+            className="invisible text-red-500 transition-transform hover:scale-125 group-hover:visible"
+          >
+            <AiFillDelete size={24} className="pointer-events-none" />
           </button>
         </div>
       </div>

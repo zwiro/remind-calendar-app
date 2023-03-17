@@ -2,17 +2,31 @@ import PlannedEvent from "./PlannedEvent"
 import Spacer from "./Spacer"
 import { motion, AnimatePresence } from "framer-motion"
 import { MdExpandMore } from "react-icons/md"
-import { useAppSelector } from "../hooks/reduxHooks"
+import { useAppSelector, useAppDispatch } from "../hooks/reduxHooks"
+import { removeEvent } from "../state/eventsSlice"
 function PlannedEvents() {
+  const dispatch = useAppDispatch()
   const { events } = useAppSelector((state) => state.events)
+
+  function handleClick(e: React.MouseEvent) {
+    if (
+      e.target instanceof HTMLButtonElement &&
+      e.target.dataset.action === "delete"
+    ) {
+      dispatch(removeEvent(e.target.dataset.id!))
+    }
+  }
+
   console.log(events)
+
   return (
-    <div className="[&>div:last-of-type]:border-none">
+    <div onClick={handleClick} className="[&>div:last-of-type]:border-none">
       <h3 className="text-lg font-bold">Planned events</h3>
       <Spacer value={2} />
       {events.map((event) => (
         <PlannedEvent
           key={event.id}
+          id={event.id}
           title={event.title}
           description={event.description}
           location={event.location}
