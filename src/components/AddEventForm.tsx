@@ -6,7 +6,7 @@ import useExpand from "../hooks/useExpand"
 import { motion, AnimatePresence } from "framer-motion"
 import Spacer from "./Spacer"
 import RadioInput from "./RadioInput"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks"
 import { nanoid } from "nanoid"
 import { addEvent } from "../state/eventsSlice"
@@ -16,7 +16,8 @@ function AddEventForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitSuccessful },
+    reset,
   } = useForm()
   const { isExpanded, toggleMenu } = useExpand()
   const [time, setTime] = useState("12:00")
@@ -28,6 +29,14 @@ function AddEventForm() {
     exit: { height: 0, opacity: 0, padding: 0 },
     transition: { opacity: { duration: 0.1 } },
   }
+
+  useEffect(() => {
+    reset({
+      title: "",
+      description: "",
+      location: "",
+    })
+  }, [isSubmitSuccessful])
 
   return (
     <form
