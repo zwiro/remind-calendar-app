@@ -20,6 +20,7 @@ function PlannedEvents() {
           time={event.time}
         />
       ))}
+      {!events.length && <div>You have no planned events on this day.</div>}
     </div>
   )
 }
