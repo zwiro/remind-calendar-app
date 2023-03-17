@@ -19,9 +19,9 @@ function AddEventForm() {
     formState: { errors },
   } = useForm()
   const { isExpanded, toggleMenu } = useExpand()
+  const [time, setTime] = useState("12:00")
   const { date } = useAppSelector((state) => state.date)
   const dispatch = useAppDispatch()
-
   const expandAnimation = {
     initial: { height: 0, opacity: 0, padding: 0 },
     animate: { height: "auto", opacity: 1 },
@@ -33,12 +33,14 @@ function AddEventForm() {
     <form
       onSubmit={handleSubmit((data) => {
         const formData = {
-          ...data,
           id: nanoid(),
+          title: data.title,
+          description: data.description,
           date,
-          time: "12:20",
+          time,
+          category: data.category,
         }
-        console.log(formData)
+        dispatch(addEvent(formData))
       })}
       className="flex flex-col"
     >
@@ -95,7 +97,8 @@ function AddEventForm() {
                 clearIcon={null}
                 name="date"
                 format="hh:mm a"
-                value={new Date()}
+                value={time}
+                onChange={(e) => setTime(e.toString())}
                 className="grow bg-slate-100 py-2 text-center"
               />
             </InputContainer>
