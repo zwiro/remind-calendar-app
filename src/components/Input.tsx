@@ -1,4 +1,10 @@
-import { FieldValues, UseFormRegister } from "react-hook-form/dist/types"
+import {
+  FieldValues,
+  UseFormRegister,
+  FieldError,
+  FieldErrorsImpl,
+  Merge,
+} from "react-hook-form/dist/types"
 
 import InputContainer from "./InputContainer"
 
@@ -7,9 +13,10 @@ interface InputProps {
   name: string
   placeholder: string
   register: UseFormRegister<FieldValues>
+  error?: FieldError | Merge<FieldError, FieldErrorsImpl<any>>
 }
 
-function Input({ value, name, placeholder, register }: InputProps) {
+function Input({ value, name, placeholder, register, error }: InputProps) {
   return (
     <InputContainer>
       <label htmlFor={value} className="w-1/5">
@@ -21,7 +28,7 @@ function Input({ value, name, placeholder, register }: InputProps) {
         name={value}
         id={value}
         placeholder={placeholder}
-        className="grow bg-slate-100 p-2"
+        className={`grow border bg-slate-100 p-2 ${error && "border-red-500"} `}
       />
     </InputContainer>
   )

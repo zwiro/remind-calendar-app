@@ -63,6 +63,7 @@ function AddEventForm() {
               value="title"
               placeholder="Meeting with client"
               register={register}
+              error={errors.title}
             />
             <InputContainer>
               <label htmlFor="description" className="w-1/5">
@@ -73,7 +74,9 @@ function AddEventForm() {
                 name="description"
                 id="description"
                 placeholder="Meeting with John Doe to discuss details about the new business project"
-                className="grow bg-slate-100 p-2"
+                className={`grow border bg-slate-100 p-2 ${
+                  errors.description && "border-red-500"
+                } `}
               />
             </InputContainer>
             <Input
@@ -81,6 +84,7 @@ function AddEventForm() {
               value="location"
               placeholder="London, Long St. 48"
               register={register}
+              error={errors.location}
             />
             <InputContainer>
               <label htmlFor="time" className="w-1/5">
