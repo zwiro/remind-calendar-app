@@ -1,18 +1,30 @@
 import { BiTimeFive } from "react-icons/bi"
 import { formatDate } from "../utils/formatDate"
+import { MdBusinessCenter } from "react-icons/md"
+import { RiParentFill } from "react-icons/ri"
 
 interface IncomingEventProps {
   title: string
   location: string
   date: string
   time: string
+  category: string
 }
 
-function IncomingEvent({ title, location, date, time }: IncomingEventProps) {
+function IncomingEvent({
+  title,
+  location,
+  date,
+  time,
+  category,
+}: IncomingEventProps) {
   return (
     <div className="flex justify-between border-b border-zinc-300 py-2 px-1 hover:cursor-pointer hover:bg-slate-300">
       <div>
-        <p className="font-bold">{title}</p>
+        <p className="flex items-center gap-2 font-bold">
+          {title}{" "}
+          {category === "private" ? <RiParentFill /> : <MdBusinessCenter />}
+        </p>
         <p className="text-sm">{location}</p>
       </div>
       <div className="flex flex-col items-end text-sm">

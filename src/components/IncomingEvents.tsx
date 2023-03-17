@@ -52,6 +52,7 @@ function IncomingEvents() {
                 location={event.location}
                 date={event.date}
                 time={event.time}
+                category={event.category}
               />
             ))}
           </motion.div>

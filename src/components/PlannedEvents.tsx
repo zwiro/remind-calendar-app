@@ -7,6 +7,9 @@ import { removeEvent } from "../state/eventsSlice"
 function PlannedEvents() {
   const dispatch = useAppDispatch()
   const { events } = useAppSelector((state) => state.events)
+  const { date } = useAppSelector((state) => state.date)
+
+  const plannedEvents = events.filter((ev) => ev.date === date)
 
   function handleClick(e: React.MouseEvent) {
     if (
@@ -23,7 +26,7 @@ function PlannedEvents() {
     <div onClick={handleClick} className="[&>div:last-of-type]:border-none">
       <h3 className="text-lg font-bold">Planned events</h3>
       <Spacer value={2} />
-      {events.map((event) => (
+      {plannedEvents.map((event) => (
         <PlannedEvent
           key={event.id}
           id={event.id}
@@ -34,7 +37,9 @@ function PlannedEvents() {
           time={event.time}
         />
       ))}
-      {!events.length && <div>You have no planned events on this day.</div>}
+      {!plannedEvents.length && (
+        <div>You have no planned events on this day.</div>
+      )}
     </div>
   )
 }
