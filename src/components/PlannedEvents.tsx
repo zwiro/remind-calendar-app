@@ -9,7 +9,11 @@ function PlannedEvents() {
   const { events } = useAppSelector((state) => state.events)
   const { date } = useAppSelector((state) => state.date)
 
-  const plannedEvents = events.filter((ev) => ev.date === date)
+  const plannedEvents = events.filter(
+    (ev) =>
+      new Date(ev.date).toLocaleDateString("en-UK") ===
+      new Date(date).toLocaleDateString("en-UK")
+  )
 
   function handleClick(e: React.MouseEvent) {
     if (
@@ -19,8 +23,6 @@ function PlannedEvents() {
       dispatch(removeEvent(e.target.dataset.id!))
     }
   }
-
-  console.log(events)
 
   return (
     <div onClick={handleClick} className="[&>div:last-of-type]:border-none">
