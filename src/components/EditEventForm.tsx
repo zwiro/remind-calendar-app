@@ -4,33 +4,50 @@ import InputContainer from "./InputContainer"
 import RadioInput from "./RadioInput"
 import { useForm } from "react-hook-form"
 import { useState } from "react"
+import { AiFillCheckSquare } from "react-icons/ai"
 
-function EditEventForm() {
+interface PlannedEventProps {
+  id: string
+  title: string
+  description: string
+  time: string
+  location: string
+  category: string
+}
+
+function EditEventForm({
+  id,
+  title,
+  location,
+  description,
+  time,
+  category,
+}: PlannedEventProps) {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitSuccessful },
     reset,
   } = useForm()
-  const [time, setTime] = useState("12:00")
+  const [pickedTime, setPickedTime] = useState("12:00")
 
   return (
-    <form>
-      <InputContainer>
-        <Input
-          name="Location"
-          value="location"
-          placeholder="London, Long St. 48"
-          register={register}
-          error={errors.location}
-        />
-      </InputContainer>
+    <form className="flex flex-col gap-2 py-2">
+      <Input
+        name="Title"
+        value="title"
+        defaultValue={title}
+        placeholder="Meeting with client"
+        register={register}
+        error={errors.title}
+      />
       <InputContainer>
         <label htmlFor="description" className="w-1/5">
           Description
         </label>
         <textarea
           {...register("description", { required: true })}
+          defaultValue={description}
           name="description"
           id="description"
           placeholder="Meeting with John Doe to discuss details about the new business project"
@@ -42,6 +59,7 @@ function EditEventForm() {
       <Input
         name="Location"
         value="location"
+        defaultValue={location}
         placeholder="London, Long St. 48"
         register={register}
         error={errors.location}
@@ -56,13 +74,20 @@ function EditEventForm() {
           name="date"
           format="hh:mm a"
           value={time}
-          onChange={(e) => setTime(e.toString())}
+          onChange={(e) => setPickedTime(e.toString())}
           className="grow bg-slate-100 py-2 text-center"
         />
       </InputContainer>
       <div className="flex justify-end gap-2">
-        <RadioInput register={register} />
+        <RadioInput register={register} defaultValue={category} isEditing />
       </div>
+      <button
+        type="submit"
+        className="group flex items-center gap-2 self-end text-lg font-bold text-blue-500 hover:underline"
+      >
+        Save{" "}
+        <AiFillCheckSquare className="transition-transform group-hover:scale-125" />
+      </button>
     </form>
   )
 }

@@ -30,10 +30,9 @@ function PlannedEvent({
   const [isEditing, setIsEditing] = useState(false)
 
   return (
-    <div className="group space-y-2 border-b border-zinc-300 py-2 px-1 hover:bg-slate-300">
+    <>
       {!isEditing ? (
-        <>
-          {" "}
+        <div className="group space-y-2 border-b border-zinc-300 py-2 px-1 hover:bg-slate-300">
           <div className="flex items-center justify-between">
             <p className="flex items-center gap-2 font-bold">
               {title}{" "}
@@ -63,11 +62,18 @@ function PlannedEvent({
               </button>
             </div>
           </div>
-        </>
+        </div>
       ) : (
-        <EditEventForm />
+        <EditEventForm
+          id={id}
+          location={location}
+          description={description}
+          title={title}
+          time={time}
+          category={category}
+        />
       )}
-    </div>
+    </>
   )
 }
 
