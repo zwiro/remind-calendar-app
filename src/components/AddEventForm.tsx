@@ -70,8 +70,9 @@ function AddEventForm() {
               />
             </InputContainer>
             <div className="flex justify-end gap-2">
-              <RadioInput value="work" />
-              <RadioInput value="private" />
+              <RadioInput />
+              {/* Bug - radio inputs checking not working as
+              reusable component with 'value' prop */}
             </div>
             <button
               type="submit"
