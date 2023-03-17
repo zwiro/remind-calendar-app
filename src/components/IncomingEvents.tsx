@@ -14,7 +14,11 @@ function IncomingEvents() {
   const { events } = useAppSelector((state) => state.events)
 
   const incomingEvents = events
-    .filter((ev) => new Date(ev.date).getTime() - new Date().getTime() > 0)
+    .filter(
+      (ev) =>
+        new Date(ev.date).getTime() - new Date().getTime() > 0 &&
+        new Date(ev.date).getTime() - new Date().getTime() < 1209600000
+    )
     .slice(0, 10)
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
 
@@ -31,7 +35,10 @@ function IncomingEvents() {
         onClick={!isLgScreen ? toggleMenu : () => {}}
         className="group flex items-center justify-between hover:cursor-pointer hover:bg-slate-300 lg:hover:cursor-default lg:hover:bg-inherit"
       >
-        <SectionHeader>Incoming events</SectionHeader>
+        <div>
+          <SectionHeader>Incoming events</SectionHeader>
+          <p>Next 2 weeks</p>
+        </div>
         {!isLgScreen && (
           <MdExpandMore
             size={24}

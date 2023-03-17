@@ -2,6 +2,7 @@ import { BiTimeFive } from "react-icons/bi"
 import { formatDate } from "../utils/formatDate"
 import { MdBusinessCenter } from "react-icons/md"
 import { RiParentFill } from "react-icons/ri"
+import { useAppDispatch } from "../hooks/reduxHooks"
 
 interface IncomingEventProps {
   title: string
@@ -19,7 +20,7 @@ function IncomingEvent({
   category,
 }: IncomingEventProps) {
   return (
-    <div className="flex justify-between border-b border-zinc-300 py-2 px-1 hover:cursor-pointer hover:bg-slate-300">
+    <div className="flex justify-between border-b border-zinc-300 py-2 px-1">
       <div>
         <p className="flex items-center gap-2 font-bold">
           {title}{" "}
