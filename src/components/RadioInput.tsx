@@ -1,17 +1,15 @@
-import { useState } from "react"
+import { FieldValues, UseFormRegister } from "react-hook-form/dist/types"
 
-function RadioInput() {
-  const [option, setOption] = useState("private")
-  console.log(option)
+function RadioInput({ register }: { register: UseFormRegister<FieldValues> }) {
   return (
     <>
       <input
+        {...register("category", { required: true })}
         type="radio"
         id="work"
         name="category"
         value="work"
         className={`peer/work hidden`}
-        onChange={(e) => setOption(e.target.value)}
       />
       <label
         htmlFor="work"
@@ -20,13 +18,13 @@ function RadioInput() {
         Work
       </label>
       <input
+        {...register("category", { required: true })}
         type="radio"
         id="private"
         name="category"
         value="private"
         className={`peer/private hidden`}
         defaultChecked
-        onChange={(e) => setOption(e.target.value)}
       />
       <label
         htmlFor="private"

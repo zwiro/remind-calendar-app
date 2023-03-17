@@ -6,9 +6,21 @@ import useExpand from "../hooks/useExpand"
 import { motion, AnimatePresence } from "framer-motion"
 import Spacer from "./Spacer"
 import RadioInput from "./RadioInput"
+import { useState } from "react"
+import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks"
+import { nanoid } from "nanoid"
+import { addEvent } from "../state/eventsSlice"
+import { useForm } from "react-hook-form"
 
 function AddEventForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
   const { isExpanded, toggleMenu } = useExpand()
+  const { date } = useAppSelector((state) => state.date)
+  const dispatch = useAppDispatch()
 
   const expandAnimation = {
     initial: { height: 0, opacity: 0, padding: 0 },
@@ -18,7 +30,18 @@ function AddEventForm() {
   }
 
   return (
-    <form className="flex flex-col">
+    <form
+      onSubmit={handleSubmit((data) => {
+        const formData = {
+          ...data,
+          id: nanoid(),
+          date,
+          time: "12:20",
+        }
+        console.log(formData)
+      })}
+      className="flex flex-col"
+    >
       <div
         onClick={toggleMenu}
         className="group flex items-center justify-between hover:cursor-pointer hover:bg-slate-300"
@@ -39,12 +62,14 @@ function AddEventForm() {
               name="Title"
               value="title"
               placeholder="Meeting with client"
+              register={register}
             />
             <InputContainer>
               <label htmlFor="description" className="w-1/5">
                 Description
               </label>
               <textarea
+                {...register("description", { required: true })}
                 name="description"
                 id="description"
                 placeholder="Meeting with John Doe to discuss details about the new business project"
@@ -55,6 +80,7 @@ function AddEventForm() {
               name="Location"
               value="location"
               placeholder="London, Long St. 48"
+              register={register}
             />
             <InputContainer>
               <label htmlFor="time" className="w-1/5">
@@ -70,7 +96,7 @@ function AddEventForm() {
               />
             </InputContainer>
             <div className="flex justify-end gap-2">
-              <RadioInput />
+              <RadioInput register={register} />
               {/* Bug - radio inputs checking not working as
               reusable component with 'value' prop */}
             </div>

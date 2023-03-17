@@ -1,10 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 interface Event {
-  id: number
+  id: string
   title: string
   description: string
-  date: Date
+  date: string
+  time: string
+  category: "private" | "work"
 }
 
 interface EventsState {
@@ -22,7 +24,7 @@ const eventsSlice = createSlice({
     addEvent: (state, action: PayloadAction<Event>) => {
       state.events = [...state.events, action.payload]
     },
-    removeEvent: (state, action: PayloadAction<number>) => {
+    removeEvent: (state, action: PayloadAction<string>) => {
       const updatedEvents = state.events.filter(
         (event) => event.id !== action.payload
       )
