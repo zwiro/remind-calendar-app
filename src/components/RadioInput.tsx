@@ -1,4 +1,8 @@
+import { useState } from "react"
+
 function RadioInput({ value }: { value: string }) {
+  const [option, setOption] = useState("private")
+  console.log(option)
   return (
     <>
       <input
@@ -8,6 +12,7 @@ function RadioInput({ value }: { value: string }) {
         value={value}
         className={`peer/${value} hidden`}
         defaultChecked={value === "private"}
+        onChange={(e) => setOption(e.target.value)}
       />
       <label
         htmlFor={value}
