@@ -11,6 +11,7 @@ import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks"
 import { nanoid } from "nanoid"
 import { addEvent } from "../state/eventsSlice"
 import { useForm } from "react-hook-form"
+import FormSuccess from "./FormSuccess"
 
 function AddEventForm() {
   const {
@@ -22,6 +23,7 @@ function AddEventForm() {
   const { isExpanded, toggleMenu } = useExpand()
   const [time, setTime] = useState("12:00")
   const { date } = useAppSelector((state) => state.date)
+  const [successIconVisible, setSuccessIconVisible] = useState(false)
   const dispatch = useAppDispatch()
   const expandAnimation = {
     initial: { height: 0, opacity: 0, padding: 0 },
@@ -51,8 +53,12 @@ function AddEventForm() {
           category: data.category,
         }
         dispatch(addEvent(formData))
+        setSuccessIconVisible(true)
+        setTimeout(() => {
+          setSuccessIconVisible(false)
+        }, 1000)
       })}
-      className="flex flex-col"
+      className="relative flex flex-col"
     >
       <div
         onClick={toggleMenu}
@@ -114,18 +120,20 @@ function AddEventForm() {
             </InputContainer>
             <div className="flex justify-end gap-2">
               <RadioInput register={register} />
-              {/* Bug - radio inputs checking not working as
-              reusable component with 'value' prop */}
             </div>
-            <button
+            <motion.button
+              whileTap={{ scale: 0.5 }}
               type="submit"
               className="group flex items-center gap-2 self-end text-lg font-bold text-blue-500 hover:underline"
             >
               Add{" "}
               <MdAddBox className="transition-transform group-hover:scale-125" />
-            </button>
+            </motion.button>
           </motion.div>
         )}
+        <AnimatePresence>
+          {successIconVisible && <FormSuccess />}
+        </AnimatePresence>
       </AnimatePresence>
     </form>
   )

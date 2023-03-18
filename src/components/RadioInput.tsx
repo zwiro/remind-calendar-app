@@ -1,4 +1,5 @@
 import { FieldValues, UseFormRegister } from "react-hook-form/dist/types"
+import { motion } from "framer-motion"
 
 interface RadioInputProps {
   register: UseFormRegister<FieldValues>
@@ -18,7 +19,8 @@ function RadioInput({ register, defaultValue, isEditing }: RadioInputProps) {
         className={` ${isEditing ? "peer/workEdit" : "peer/work"} hidden`}
         defaultChecked={defaultValue === "work"}
       />
-      <label
+      <motion.label
+        whileTap={{ scale: 0.5 }}
         htmlFor={`${isEditing ? "workEdit" : "work"}`}
         className={`cursor-pointer border border-blue-500 p-2 capitalize text-blue-500 transition-colors ${
           !isEditing
@@ -27,7 +29,7 @@ function RadioInput({ register, defaultValue, isEditing }: RadioInputProps) {
         }`}
       >
         Work
-      </label>
+      </motion.label>
       <input
         {...register("category", { required: true })}
         type="radio"
@@ -37,7 +39,8 @@ function RadioInput({ register, defaultValue, isEditing }: RadioInputProps) {
         className={`${isEditing ? "peer/privateEdit" : "peer/private"} hidden`}
         defaultChecked={defaultValue === "private" || !isEditing}
       />
-      <label
+      <motion.label
+        whileTap={{ scale: 0.5 }}
         htmlFor={`${isEditing ? "privateEdit" : "private"}`}
         className={`cursor-pointer border border-blue-500 p-2 capitalize text-blue-500 transition-colors ${
           !isEditing
@@ -46,7 +49,7 @@ function RadioInput({ register, defaultValue, isEditing }: RadioInputProps) {
         } `}
       >
         Private
-      </label>
+      </motion.label>
     </>
   )
 }
