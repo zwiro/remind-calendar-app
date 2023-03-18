@@ -9,6 +9,7 @@ import Input from "./Input"
 import RadioInput from "./RadioInput"
 import TimePicker from "react-time-picker"
 import EditEventForm from "./EditEventForm"
+import { formatTime } from "../utils/formatTime"
 
 interface PlannedEventProps {
   id: string
@@ -44,7 +45,7 @@ function PlannedEvent({
               {title}{" "}
               {category === "work" ? <MdBusinessCenter /> : <RiParentFill />}
             </p>
-            <p>{time}</p>
+            <p>{formatTime(time)}</p>
           </div>
           <p>{description}</p>
           <div className="flex justify-between">
