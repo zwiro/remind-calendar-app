@@ -131,10 +131,8 @@ function AddEventForm() {
             </motion.button>
           </motion.div>
         )}
-        <AnimatePresence>
-          {successIconVisible && <FormSuccess />}
-        </AnimatePresence>
       </AnimatePresence>
+      <AnimatePresence>{successIconVisible && <FormSuccess />}</AnimatePresence>
     </form>
   )
 }
