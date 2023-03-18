@@ -15,11 +15,6 @@ function CalendarContainer() {
   }, [value])
 
   const tileContent = (calendar: any) => {
-    console.log(
-      events.some(
-        (event) => new Date(event.date).getDate() === calendar.date.getDate()
-      )
-    )
     if (
       events.some(
         (event) =>

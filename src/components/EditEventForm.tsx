@@ -103,13 +103,21 @@ function EditEventForm({
       <div className="flex justify-end gap-2">
         <RadioInput register={register} defaultValue={category} isEditing />
       </div>
-      <button
-        type="submit"
-        className="group flex items-center gap-2 self-end text-lg font-bold text-blue-500 hover:underline"
-      >
-        Save{" "}
-        <AiFillCheckSquare className="transition-transform group-hover:scale-125" />
-      </button>
+      <div className="ml-auto flex items-center gap-2">
+        <button
+          onClick={closeEditForm}
+          className="hover:cursor-pointer hover:underline"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          className="group flex items-center gap-2 self-end text-lg font-bold text-blue-500 hover:underline"
+        >
+          Save{" "}
+          <AiFillCheckSquare className="transition-transform group-hover:scale-125" />
+        </button>
+      </div>
     </form>
   )
 }

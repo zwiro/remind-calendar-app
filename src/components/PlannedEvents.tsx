@@ -9,11 +9,13 @@ function PlannedEvents() {
   const { events } = useAppSelector((state) => state.events)
   const { date } = useAppSelector((state) => state.date)
 
-  const plannedEvents = events.filter(
-    (ev) =>
-      new Date(ev.date).toLocaleDateString("en-UK") ===
-      new Date(date).toLocaleDateString("en-UK")
-  )
+  const plannedEvents = events
+    .filter(
+      (ev) =>
+        new Date(ev.date).toLocaleDateString("en-UK") ===
+        new Date(date).toLocaleDateString("en-UK")
+    )
+    .sort((a, b) => a.time.localeCompare(b.time))
 
   function handleClick(e: React.MouseEvent) {
     if (
@@ -26,7 +28,9 @@ function PlannedEvents() {
 
   return (
     <div onClick={handleClick} className="[&>div:last-of-type]:border-none">
-      <h3 className="text-lg font-bold">Planned events</h3>
+      <h3 className="text-lg font-bold">
+        Planned events ({plannedEvents.length})
+      </h3>
       <Spacer value={2} />
       {plannedEvents.map((event) => (
         <PlannedEvent
