@@ -30,7 +30,7 @@ function App() {
         key={`${isDarkMode}`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className={`flex flex-col lg:grid lg:grid-cols-2 xl:px-24 `}
+        className={`flex flex-col lg:grid lg:grid-cols-2 xl:px-24`}
       >
         <IncomingEvents />
         <CalendarContainer />

@@ -21,6 +21,58 @@ body {
   @apply bg-gradient-to-b from-slate-200 to-gray-300 text-zinc-800 transition-colors duration-1000 dark:from-zinc-800 dark:to-zinc-900 dark:text-slate-200;
 }
 
+.react-calendar {
+  @apply xl:text-xl;
+  width: 100%;
+  border: none;
+  font-family: "Raleway", sans-serif;
+  line-height: 2em;
+}
+
+.react-calendar__navigation {
+  @apply border border-slate-300 dark:border-zinc-600;
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  @apply bg-slate-300 dark:bg-zinc-600;
+}
+.react-calendar__month-view__weekdays {
+  @apply border border-slate-300 dark:border-zinc-600;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  @apply text-red-500;
+}
+.react-calendar__month-view__days__day--neighboringMonth {
+  @apply text-zinc-400 dark:text-slate-500;
+}
+
+.react-calendar__tile {
+  padding: 25px 6.6667px;
+  line-height: 24px;
+  border: 1px solid !important;
+  @apply border-slate-300 dark:border-zinc-600 !important;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  @apply bg-slate-300 dark:bg-zinc-600;
+}
+
+.react-calendar__tile--now {
+  @apply font-bold;
+}
+
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  @apply text-blue-500;
+}
+
+.react-calendar__tile--active {
+  @apply font-bold text-blue-500;
+}
+
 .react-time-picker__wrapper {
   border: none;
 }

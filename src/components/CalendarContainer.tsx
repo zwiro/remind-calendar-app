@@ -3,7 +3,6 @@ import Calendar from "react-calendar"
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks"
 import { changeDate } from "../state/dateSlice"
 import "react-calendar/dist/Calendar.css"
-import "../calendar.css"
 
 function CalendarContainer() {
   const dispatch = useAppDispatch()
