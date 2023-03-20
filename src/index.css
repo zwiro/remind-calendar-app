@@ -5,19 +5,20 @@
 @tailwind utilities;
 
 :root {
-  @apply bg-gradient-to-b from-slate-200 to-gray-300  text-zinc-800;
   font-family: "Raleway", sans-serif;
   line-height: 1.5;
   font-weight: 400;
   min-height: 100vh;
-
-  /* color-scheme: light dark; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+body {
+  @apply bg-gradient-to-b from-slate-200 to-gray-300 text-zinc-800 transition-colors dark:from-zinc-800 dark:to-zinc-900 dark:text-slate-200;
 }
 
 .react-time-picker__wrapper {

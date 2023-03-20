@@ -34,7 +34,7 @@ function CalendarContainer() {
         onChange={onChange}
         tileContent={tileContent}
         value={value}
-        className="bg-slate-200 text-zinc-900"
+        className="bg-slate-200 text-zinc-900 dark:bg-zinc-700 dark:text-slate-200"
       />
     </section>
   )

@@ -11,9 +11,7 @@ import TimePicker from "react-time-picker"
 import EditEventForm from "./EditEventForm"
 import { formatTime } from "../utils/formatTime"
 import { motion } from "framer-motion"
-import { convertMiliseconds } from "../utils/convertMiliseconds"
 import { formatDate } from "../utils/formatDate"
-import { compareDates } from "../utils/compareDates"
 
 interface PlannedEventProps {
   id: string
@@ -39,8 +37,6 @@ function PlannedEvent({
   function closeEditForm() {
     setIsEditing(false)
   }
-
-  console.log(compareDates(new Date(), new Date("December 25, 2025 23:15:30")))
 
   return (
     <>
