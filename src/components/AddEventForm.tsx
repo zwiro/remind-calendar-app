@@ -62,7 +62,7 @@ function AddEventForm() {
     >
       <div
         onClick={toggleMenu}
-        className="group flex items-center justify-between hover:cursor-pointer hover:bg-slate-300"
+        className="group flex items-center justify-between hover:cursor-pointer hover:bg-slate-300 dark:hover:bg-zinc-700"
       >
         <h3 className="text-lg font-bold">Add a new event</h3>
         <MdExpandMore
@@ -92,7 +92,7 @@ function AddEventForm() {
                 name="description"
                 id="description"
                 placeholder="Meeting with John Doe to discuss details about the new business project"
-                className={`grow border bg-slate-100 p-2 ${
+                className={`grow border bg-slate-100 p-2 dark:bg-zinc-700 ${
                   errors.description && "border-red-500"
                 } `}
               />
@@ -115,7 +115,7 @@ function AddEventForm() {
                 format="hh:mm a"
                 value={time}
                 onChange={(e) => setTime(e.toString())}
-                className="grow bg-slate-100 py-2 text-center"
+                className="grow border bg-slate-100 py-2 text-center dark:bg-zinc-700"
               />
             </InputContainer>
             <div className="flex justify-end gap-2">

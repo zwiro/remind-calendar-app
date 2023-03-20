@@ -37,7 +37,9 @@ function Input({
         id={value}
         defaultValue={defaultValue}
         placeholder={placeholder}
-        className={`grow border bg-slate-100 p-2 ${error && "border-red-500"} `}
+        className={`grow border bg-slate-100 p-2 dark:bg-zinc-700 ${
+          error && "border-red-500"
+        } `}
       />
     </InputContainer>
   )

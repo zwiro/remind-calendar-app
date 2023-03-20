@@ -45,7 +45,7 @@ function PlannedEvent({
           layout
           // exit={{ scale: 0, padding: 0 }}
           transition={{ duration: 0.2 }}
-          className="group space-y-2 border-b border-zinc-300 py-2 px-1 hover:bg-slate-300"
+          className="group space-y-2 border-b border-zinc-300 py-2 px-1 hover:bg-slate-300 dark:hover:bg-zinc-700"
         >
           <div className="flex items-center justify-between">
             <p className="flex items-center gap-2 font-bold">

@@ -39,7 +39,7 @@ function IncomingEvents() {
       <Spacer value={2} />
       <div
         onClick={!isLgScreen ? toggleMenu : () => {}}
-        className="group flex items-center justify-between hover:cursor-pointer hover:bg-slate-300 lg:hover:cursor-default lg:hover:bg-inherit"
+        className={`group flex items-center justify-between hover:cursor-pointer hover:bg-slate-300 dark:hover:bg-zinc-700 lg:hover:cursor-default lg:hover:bg-transparent lg:dark:hover:bg-transparent`}
       >
         <div>
           <SectionHeader>Incoming events</SectionHeader>
