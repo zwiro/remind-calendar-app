@@ -3,28 +3,39 @@ import DayDetails from "./components/DayDetails"
 import IncomingEvents from "./components/IncomingEvents"
 import LogoBar from "./components/LogoBar"
 import { useState, useEffect } from "react"
+import { motion } from "framer-motion"
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useState(
+    JSON.parse(localStorage.getItem("darkTheme")!) || false
+  )
 
   function toggleDarkMode() {
-    setIsDarkMode((prevMode) => !prevMode)
+    setIsDarkMode((prevMode: boolean) => !prevMode)
   }
 
   useEffect(() => {
-    isDarkMode
-      ? document.documentElement.classList.add("dark")
-      : document.documentElement.classList.remove("dark")
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark")
+    } else {
+      document.documentElement.classList.remove("dark")
+    }
+    localStorage.setItem("darkTheme", JSON.stringify(isDarkMode))
   }, [isDarkMode])
 
   return (
     <>
       <LogoBar toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
-      <div className={`flex flex-col lg:grid lg:grid-cols-2 xl:px-24 `}>
+      <motion.div
+        key={`${isDarkMode}`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className={`flex flex-col lg:grid lg:grid-cols-2 xl:px-24 `}
+      >
         <IncomingEvents />
         <CalendarContainer />
         <DayDetails />
-      </div>
+      </motion.div>
     </>
   )
 }

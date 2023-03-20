@@ -14,9 +14,9 @@ function LogoBar({ toggleDarkMode, isDarkMode }: LogoBarProps) {
       <img src={logo} alt="" />
       <p className="ml-auto">Today is {formatDate(new Date())}</p>
       <motion.div
+        whileHover={{ scale: 1.2 }}
+        whileTap={{ rotateY: 180 }}
         onClick={toggleDarkMode}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ opacity: 0, rotate: 360 }}
         className="cursor-pointer"
       >
         {!isDarkMode ? <BsMoonFill size={24} /> : <BsSunFill size={24} />}

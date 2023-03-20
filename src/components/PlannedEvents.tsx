@@ -32,20 +32,18 @@ function PlannedEvents() {
         Planned events ({plannedEvents.length})
       </h3>
       <Spacer value={2} />
-      <AnimatePresence mode="popLayout">
-        {plannedEvents.map((event) => (
-          <PlannedEvent
-            key={event.id}
-            id={event.id}
-            title={event.title}
-            description={event.description}
-            location={event.location}
-            category={event.category}
-            time={event.time}
-            date={event.date}
-          />
-        ))}
-      </AnimatePresence>
+      {plannedEvents.map((event) => (
+        <PlannedEvent
+          key={event.id}
+          id={event.id}
+          title={event.title}
+          description={event.description}
+          location={event.location}
+          category={event.category}
+          time={event.time}
+          date={event.date}
+        />
+      ))}
       {!plannedEvents.length && (
         <div>You have no planned events on this day.</div>
       )}

@@ -18,7 +18,7 @@
 }
 
 body {
-  @apply bg-gradient-to-b from-slate-200 to-gray-300 text-zinc-800 transition-colors dark:from-zinc-800 dark:to-zinc-900 dark:text-slate-200;
+  @apply bg-gradient-to-b from-slate-200 to-gray-300 text-zinc-800 transition-colors duration-1000 dark:from-zinc-800 dark:to-zinc-900 dark:text-slate-200;
 }
 
 .react-time-picker__wrapper {

@@ -53,7 +53,7 @@ function EditEventForm({
         dispatch(editEvent(formData))
         closeEditForm()
       })}
-      className="flex flex-col gap-2 py-2"
+      className="flex flex-col gap-2 border-b border-zinc-400 py-2 dark:border-zinc-300"
     >
       <Input
         name="Title"
