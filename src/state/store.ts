@@ -1,7 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit"
 import eventsReducer from "./eventsSlice"
 import dateReducer from "./dateSlice"
-import thunk from "redux-thunk"
 import storage from "redux-persist/lib/storage"
 import {
   persistStore,

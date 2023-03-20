@@ -5,7 +5,6 @@ import {
   FieldErrorsImpl,
   Merge,
 } from "react-hook-form/dist/types"
-
 import InputContainer from "./InputContainer"
 
 interface InputProps {

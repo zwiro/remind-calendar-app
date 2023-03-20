@@ -1,9 +1,8 @@
-import PlannedEvent from "./PlannedEvent"
-import Spacer from "./Spacer"
-import { motion, AnimatePresence } from "framer-motion"
-import { MdExpandMore } from "react-icons/md"
 import { useAppSelector, useAppDispatch } from "../hooks/reduxHooks"
 import { removeEvent } from "../state/eventsSlice"
+import PlannedEvent from "./PlannedEvent"
+import Spacer from "./Spacer"
+
 function PlannedEvents() {
   const dispatch = useAppDispatch()
   const { events } = useAppSelector((state) => state.events)
@@ -34,7 +33,7 @@ function PlannedEvents() {
       <Spacer value={2} />
       {plannedEvents.map((event) => (
         <PlannedEvent
-          key={event.id}
+          key={`${event.id}-planned`}
           id={event.id}
           title={event.title}
           description={event.description}

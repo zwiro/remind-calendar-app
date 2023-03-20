@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react"
 import Calendar from "react-calendar"
-import "react-calendar/dist/Calendar.css"
-import "../calendar.css"
 import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks"
 import { changeDate } from "../state/dateSlice"
+import "react-calendar/dist/Calendar.css"
+import "../calendar.css"
 
 function CalendarContainer() {
   const dispatch = useAppDispatch()
+
   const [value, onChange] = useState(new Date())
+
   const { events } = useAppSelector((state) => state.events)
 
   useEffect(() => {

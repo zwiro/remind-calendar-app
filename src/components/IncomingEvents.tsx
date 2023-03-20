@@ -1,18 +1,19 @@
+import { MdExpandMore } from "react-icons/md"
+import { motion, AnimatePresence } from "framer-motion"
+import { useAppSelector } from "../hooks/reduxHooks"
+import { setDateHour } from "../utils/setDateHour"
+import useExpand from "../hooks/useExpand"
+import useMediaQuery from "../hooks/useMediaQuery"
 import IncomingEvent from "./IncomingEvent"
 import SectionContainer from "./SectionContainer"
 import SectionHeader from "./SectionHeader"
 import Spacer from "./Spacer"
-import { MdExpandMore } from "react-icons/md"
-import { motion, AnimatePresence } from "framer-motion"
-import useExpand from "../hooks/useExpand"
-import useMediaQuery from "../hooks/useMediaQuery"
-import { useAppSelector } from "../hooks/reduxHooks"
-import { formatTime } from "../utils/formatTime"
-import { setDateHour } from "../utils/setDateHour"
 
 function IncomingEvents() {
   const isLgScreen = useMediaQuery("(min-width: 1024px)")
+
   const { isExpanded, toggleMenu } = useExpand(true)
+
   const { events } = useAppSelector((state) => state.events)
 
   const incomingEvents = events
@@ -60,7 +61,7 @@ function IncomingEvents() {
           <motion.div {...expandAnimation}>
             {incomingEvents.map((event) => (
               <IncomingEvent
-                key={event.id}
+                key={`${event.id}-incoming`}
                 title={event.title}
                 location={event.location}
                 date={event.date}

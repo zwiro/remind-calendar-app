@@ -1,12 +1,12 @@
+import { useState } from "react"
+import { useForm } from "react-hook-form"
 import TimePicker from "react-time-picker"
+import { useAppDispatch } from "../hooks/reduxHooks"
+import { AiFillCheckSquare } from "react-icons/ai"
+import { editEvent } from "../state/eventsSlice"
 import Input from "./Input"
 import InputContainer from "./InputContainer"
 import RadioInput from "./RadioInput"
-import { useForm } from "react-hook-form"
-import { useState, useEffect } from "react"
-import { AiFillCheckSquare } from "react-icons/ai"
-import { useAppDispatch } from "../hooks/reduxHooks"
-import { editEvent } from "../state/eventsSlice"
 
 interface PlannedEventProps {
   id: string
@@ -30,11 +30,11 @@ function EditEventForm({
   closeEditForm,
 }: PlannedEventProps) {
   const dispatch = useAppDispatch()
+
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitSuccessful },
-    reset,
+    formState: { errors },
   } = useForm()
   const [pickedTime, setPickedTime] = useState(time)
 

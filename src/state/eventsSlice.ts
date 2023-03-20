@@ -1,14 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-
-interface Event {
-  id: string
-  title: string
-  description: string
-  location: string
-  date: string
-  time: string
-  category: "private" | "work"
-}
+import { Event } from "../types"
 
 interface EventsState {
   events: Event[]

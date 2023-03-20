@@ -1,7 +1,7 @@
-import logo from "../assets/logo.svg"
-import { formatDate } from "../utils/formatDate"
 import { BsSunFill, BsMoonFill } from "react-icons/bs"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
+import { formatDate } from "../utils/formatDate"
+import logo from "../assets/logo.svg"
 
 interface LogoBarProps {
   toggleDarkMode: () => void
@@ -15,7 +15,7 @@ function LogoBar({ toggleDarkMode, isDarkMode }: LogoBarProps) {
       <p className="ml-auto">Today is {formatDate(new Date())}</p>
       <motion.div
         whileHover={{ scale: 1.2 }}
-        whileTap={{ rotateY: 180 }}
+        whileTap={{ rotate: 180 }}
         onClick={toggleDarkMode}
         className="cursor-pointer"
       >

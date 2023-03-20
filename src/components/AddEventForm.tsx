@@ -1,16 +1,16 @@
+import { useState, useEffect } from "react"
 import TimePicker from "react-time-picker"
+import { useForm } from "react-hook-form"
+import { MdAddBox, MdExpandMore } from "react-icons/md"
+import { nanoid } from "nanoid"
+import { motion, AnimatePresence } from "framer-motion"
+import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks"
+import { addEvent } from "../state/eventsSlice"
+import useExpand from "../hooks/useExpand"
 import Input from "./Input"
 import InputContainer from "./InputContainer"
-import { MdAddBox, MdExpandMore } from "react-icons/md"
-import useExpand from "../hooks/useExpand"
-import { motion, AnimatePresence } from "framer-motion"
 import Spacer from "./Spacer"
 import RadioInput from "./RadioInput"
-import { useState, useEffect } from "react"
-import { useAppDispatch, useAppSelector } from "../hooks/reduxHooks"
-import { nanoid } from "nanoid"
-import { addEvent } from "../state/eventsSlice"
-import { useForm } from "react-hook-form"
 import FormSuccess from "./FormSuccess"
 
 function AddEventForm() {
@@ -20,10 +20,13 @@ function AddEventForm() {
     formState: { errors, isSubmitSuccessful },
     reset,
   } = useForm()
+
   const { isExpanded, toggleMenu } = useExpand()
+
   const [time, setTime] = useState("12:00")
-  const { date } = useAppSelector((state) => state.date)
   const [successIconVisible, setSuccessIconVisible] = useState(false)
+
+  const { date } = useAppSelector((state) => state.date)
   const dispatch = useAppDispatch()
   const expandAnimation = {
     initial: { height: 0, opacity: 0, padding: 0 },

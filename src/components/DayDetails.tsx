@@ -1,14 +1,15 @@
+import { useAppSelector } from "../hooks/reduxHooks"
+import { formatDate } from "../utils/formatDate"
+import { AnimatePresence, motion } from "framer-motion"
 import AddEventForm from "./AddEventForm"
 import PlannedEvents from "./PlannedEvents"
 import SectionContainer from "./SectionContainer"
 import SectionHeader from "./SectionHeader"
 import Spacer from "./Spacer"
-import { useAppSelector } from "../hooks/reduxHooks"
-import { formatDate } from "../utils/formatDate"
-import { AnimatePresence, motion } from "framer-motion"
 
 function DayDetails() {
   const { date } = useAppSelector((state) => state.date)
+
   const dateAnimation = {
     initial: { y: -10, opacity: 0 },
     animate: { y: 0, opacity: 1 },
