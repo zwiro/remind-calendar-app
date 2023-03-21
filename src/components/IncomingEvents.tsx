@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { MdExpandMore } from "react-icons/md"
 import { motion, AnimatePresence } from "framer-motion"
 import { useAppSelector } from "../hooks/reduxHooks"
@@ -8,8 +9,13 @@ import IncomingEvent from "./IncomingEvent"
 import SectionContainer from "./SectionContainer"
 import SectionHeader from "./SectionHeader"
 import Spacer from "./Spacer"
+import PeriodSlider from "./PeriodSlider"
+import { filterEventsByDate } from "../utils/filterEventsByDate"
+import { Period } from "../types"
 
 function IncomingEvents() {
+  const [chosenPeriod, setChosenPeriod] = useState<Period>(Period.week)
+
   const isLgScreen = useMediaQuery("(min-width: 1024px)")
 
   const { isExpanded, toggleMenu } = useExpand(true)
@@ -17,11 +23,15 @@ function IncomingEvents() {
   const { events } = useAppSelector((state) => state.events)
 
   const incomingEvents = events
-    .filter(
-      (ev) =>
-        new Date(ev.date).getTime() - new Date().getTime() > -86400000 &&
-        new Date(ev.date).getTime() - new Date().getTime() < 1209600000
-    )
+    .filter((ev) => {
+      if (chosenPeriod === Period.week) {
+        return filterEventsByDate(ev, 7)
+      } else if (chosenPeriod === Period.twoWeeks) {
+        return filterEventsByDate(ev, 14)
+      } else if (chosenPeriod === Period.month) {
+        return filterEventsByDate(ev, 30)
+      }
+    })
     .slice(0, 10)
     .sort(
       (a, b) =>
@@ -30,9 +40,9 @@ function IncomingEvents() {
     )
 
   const expandAnimation = {
-    initial: { height: 0 },
-    animate: { height: "auto" },
-    exit: { height: 0 },
+    initial: { height: 0, opacity: 0 },
+    animate: { height: "auto", opacity: 1 },
+    exit: { height: 0, opacity: 0 },
   }
 
   return (
@@ -44,7 +54,6 @@ function IncomingEvents() {
       >
         <div>
           <SectionHeader>Incoming events</SectionHeader>
-          <p>Next 2 weeks</p>
         </div>
         {!isLgScreen && (
           <MdExpandMore
@@ -55,20 +64,32 @@ function IncomingEvents() {
           />
         )}
       </div>
+      <AnimatePresence>
+        {isExpanded && (
+          <motion.div {...expandAnimation}>
+            <PeriodSlider
+              chosenPeriod={chosenPeriod}
+              setChosenPeriod={setChosenPeriod}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
       <Spacer value={2} />
       <AnimatePresence>
         {isExpanded && (
           <motion.div {...expandAnimation}>
-            {incomingEvents.map((event) => (
-              <IncomingEvent
-                key={`${event.id}-incoming`}
-                title={event.title}
-                location={event.location}
-                date={event.date}
-                time={event.time}
-                category={event.category}
-              />
-            ))}
+            <AnimatePresence>
+              {incomingEvents.map((event) => (
+                <IncomingEvent
+                  key={`${event.id}-incoming`}
+                  title={event.title}
+                  location={event.location}
+                  date={event.date}
+                  time={event.time}
+                  category={event.category}
+                />
+              ))}
+            </AnimatePresence>
           </motion.div>
         )}
         {!incomingEvents.length && (

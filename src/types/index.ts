@@ -7,3 +7,9 @@ export interface Event {
   time: string
   category: "private" | "work"
 }
+
+export enum Period {
+  week = "WEEK",
+  twoWeeks = "TWO_WEEKS",
+  month = "MONTH",
+}

@@ -1,6 +1,7 @@
 import { MdBusinessCenter } from "react-icons/md"
 import { BiTimeFive } from "react-icons/bi"
 import { RiParentFill } from "react-icons/ri"
+import { motion } from "framer-motion"
 import { formatDate } from "../utils/formatDate"
 import { formatTime } from "../utils/formatTime"
 
@@ -24,7 +25,12 @@ function IncomingEvent({
   )
 
   return (
-    <div className="flex justify-between border-b border-zinc-400 py-2 px-1 dark:border-zinc-300">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="flex justify-between border-b border-zinc-400 py-2 px-1 dark:border-zinc-300"
+    >
       <div>
         <p className="flex items-center gap-2 font-bold">
           {title}{" "}
@@ -47,7 +53,7 @@ function IncomingEvent({
           {formatDate(new Date(date))}, {formatTime(time)}
         </p>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
