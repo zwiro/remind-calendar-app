@@ -93,7 +93,14 @@ function IncomingEvents() {
           </motion.div>
         )}
         {!incomingEvents.length && (
-          <p>You have no events planned in next 2 weeks.</p>
+          <p>
+            You have no events planned in next{" "}
+            {chosenPeriod === Period.week
+              ? "week"
+              : chosenPeriod === Period.twoWeeks
+              ? "two weeks"
+              : "month"}
+          </p>
         )}
       </AnimatePresence>
     </SectionContainer>
