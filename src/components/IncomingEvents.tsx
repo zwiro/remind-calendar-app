@@ -45,6 +45,10 @@ function IncomingEvents() {
     exit: { height: 0, opacity: 0 },
   }
 
+  function setPeriod(period: Period) {
+    setChosenPeriod(period)
+  }
+
   return (
     <SectionContainer>
       <Spacer value={2} />
@@ -67,10 +71,7 @@ function IncomingEvents() {
       <AnimatePresence>
         {isExpanded && (
           <motion.div {...expandAnimation}>
-            <PeriodSlider
-              chosenPeriod={chosenPeriod}
-              setChosenPeriod={setChosenPeriod}
-            />
+            <PeriodSlider chosenPeriod={chosenPeriod} setPeriod={setPeriod} />
           </motion.div>
         )}
       </AnimatePresence>
